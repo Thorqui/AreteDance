@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+    <title>Arete Dance Studio - Inicio</title>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <input type="checkbox" id="ckbox">
+            <label for="ckbox" class="drawer">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </label>
+            <h1>Arete <span>Dance Studio</span></h1>
+            <ul class="menu-box">
+                <li>
+                    <a href="index.html" class="fa fa-home">Inicio</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="fa fa-paint-brush">Estilos<i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="bachata.html" class="fa fa-angle-right">Bachata</a></li>
+                        <li><a href="salsa.html" class="fa fa-angle-right">Salsa</a></li>
+                        <li><a href="ladys.html" class="fa fa-angle-right">Ladys</a></li>
+                        <li><a href="comercial.html" class="fa fa-angle-right">Comercial</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="nosotros.html" class="fa fa-users">Quiénes Somos</a>
+                </li>
+                <li>
+                    <a href="horarios.html" class="fa fa-calendar">Horarios</a>
+                </li>
+                <li>
+                    <a href="contacto.html" class="fa fa-envelope">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="main-content">
+        <section class="formulario-contacto">
+            <h2>Contáctanos</h2>
+            <form action="#" method="post" enctype="multipart/form-data" class="formulario-horizontal">
+                
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" name="nombre" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="Ej: 600123456" />
+                    </div>              
+                    <div class="form-group radio-group">     
+                        <p>¿Cómo nos conociste?</p>
+                        <div>
+                            <input type="radio" name="fuente" value="web" id="web" required />
+                            <label for="web">Internet</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="fuente" value="amigo" id="amigo" />
+                            <label for="amigo">Recomendación</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="fuente" value="otro" id="otro" />
+                            <label for="otro">Otro</label>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="interes">Área de interés</label>
+                        <select id="interes" name="interes">
+                            <option value="" disabled selected>Selecciona un área</option>
+                            <option value="bachata">Bachata</option>
+                            <option value="salsa">Salsa</option>
+                            <option value="comercial">Comercial</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                
+
+               
+                    <div class="form-group checkbox-group">
+                        <p>Servicios deseados</p>
+                        <div>
+                            <input type="checkbox" id="clases" name="servicios" value="clases" />
+                            <label for="clases">Clases regulares</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="talleres" name="servicios" value="talleres" />
+                            <label for="talleres">Talleres intensivos</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="eventos" name="servicios" value="eventos" />
+                            <label for="eventos">Eventos sociales</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha preferida para contacto</label>
+                        <input type="date" id="fecha" name="fecha" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora">Hora preferida</label>
+                        <input type="time" id="hora" name="hora" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                    </div>
+
+                    <div class="botones">
+                        <button type="submit">Enviar</button>
+                        <button type="reset">Limpiar</button>
+                    </div>
+                
+            </form>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Arete Dance Studio - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

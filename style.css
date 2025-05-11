@@ -1,0 +1,670 @@
+/*--------------------------------------------------------------------------------------------*/
+/* VALORES GENERALES DE TODAS LAS PÁGINAS */
+:root {
+    --primary: #B0AAC6;
+    /* Define el color primario de la paleta */
+    --secundary: #2167df;
+    /* Define el color secundario de la paleta */
+    --background: #1e2021;
+    /* Define el color de fondo general */
+    --black-text: rgb(22, 7, 7);
+    /* Define el color del texto negro */
+    --white-text: #f9f9fa;
+    /* Define el color del texto blanco 042439*/
+    --button-hover: #945757;
+    /* Define el color de fondo al pasar el ratón sobre los botones */
+    --Arete: rgb(197, 39, 113);
+}
+
+* {
+    margin: 0;
+    /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0;
+    /* Elimina el relleno predeterminado de todos los elementos */
+    text-decoration: none;
+    /* Elimina la decoración de texto (subrayado en enlaces) */
+    list-style: none;
+    /* Elimina los estilos de lista (puntos, números) */
+    box-sizing: border-box;
+    /* Incluye el padding y el border en el ancho y alto de los elementos */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    flex-grow: 1; /* El main crece para ocupar el espacio restante */
+}
+
+@font-face {
+    font-family: grasping;
+    src: url('tff/grasping.ttf');
+}
+
+@font-face {
+    font-family: comicate;
+    src: url('tff/COMICATE.TTF');
+}
+
+@font-face {
+    font-family: contrast;
+    src: url('tff/contrast.ttf');
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* Establece la fuente principal del cuerpo del documento */
+    background-color: var(--primary);
+    /* Establece el color de fondo del cuerpo usando la variable --primary */
+    margin: 0;
+    overflow-y: auto;
+    display: flex; /* Convertimos el body en un contenedor flex */
+    flex-direction: column; /* Los elementos internos se apilan verticalmente */
+    min-height: 100vh; /* El body ocupa al menos el 100% de la altura de la ventana */
+
+}
+
+header nav {
+    background-color: var(--white-text);
+    /* Establece el color de fondo de la barra de navegación usando la variable --white-text */
+    height: 10vh;
+    /* Establece la altura de la barra de navegación al 10% de la altura de la ventana */
+    width: 100%;
+    /* Establece el ancho de la barra de navegación al 100% del contenedor padre */
+    display: flex;
+    /* Utiliza Flexbox para la disposición de los elementos dentro de la navegación */
+    justify-content: space-around;
+    /* Distribuye el espacio entre los elementos de la navegación */
+    align-items: center;
+    /* Centra verticalmente los elementos de la navegación */
+}
+
+header h1 {
+    font-family: grasping;
+    color: var(--primary);
+    font-size: 2.5rem;
+    letter-spacing: 0.7rem;
+}
+
+nav ul {
+    display: flex;
+    /* Utiliza Flexbox para la disposición de los elementos de la lista de navegación */
+}
+
+nav ul li:last-child {
+    border-right: none;
+    /* Elimina el borde derecho del último elemento de la lista */
+}
+
+nav ul li a {
+    color: var(--primary);
+    /* Establece el color del texto de los enlaces de navegación */
+    font-size: 1.2rem;
+    /* Establece el tamaño de la fuente de los enlaces de navegación */
+    padding: 0.8rem 1rem;
+    /* Añade relleno vertical y horizontal a los enlaces de navegación */
+    text-transform: uppercase;
+    /* Convierte el texto de los enlaces a mayúsculas */
+}
+
+nav ul li:hover {
+    background-color: var(--Arete);
+    /* Cambia el color de fondo al pasar el ratón */
+    transition: all 0.3s;
+    /* Añade una transición suave a todas las propiedades que cambian */
+}
+
+nav h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+nav h1 span {
+  color: #8981a3;
+  font-family: grasping;
+  margin-left: 0.5em;
+}
+
+.drawer {
+    color: var(--primary);
+    /* Establece el color del texto del icono del menú desplegable */
+    float: left;
+    /* Alinea el elemento a la izquierda */
+    cursor: pointer;
+    /* Cambia el cursor a una mano al pasar por encima */
+    display: none;
+    /* Oculta el elemento por defecto */
+    margin-left: 1rem;
+    /* Añade un margen izquierdo */
+    border: solid 0.1rem var(--white-text);
+    /* Añade un borde */
+    padding: .2rem;
+    /* Añade un pequeño relleno */
+    border-radius: .1rem;
+    /* Añade un pequeño radio de borde */
+}
+
+#ckbox {
+    display: none;
+    /* Oculta el checkbox */
+}
+/*--------------------------------------------------------------------------------------------*/
+/* ESTILOS ESPECÍFICOS DEL MENÚ DESPLEGABLE (aplican a todas las páginas con menú) */
+.dropdown {
+    position: relative; /* Establece la posición relativa para que el contenido desplegable se posicione correctamente */
+  }
+  
+  .dropdown-content {
+    display: none; /* Oculta el contenido desplegable por defecto */
+    position: absolute; /* Posiciona el contenido desplegable de forma absoluta con respecto al elemento padre */
+    background-color: var(--white-text); /* Establece el color de fondo del contenido desplegable */
+    min-width: 160px; /* Establece el ancho mínimo del contenido desplegable */
+    box-shadow: 0px 8px 16px 0px var(--Arete); /* Añade una sombra al contenido desplegable */
+    z-index: 1; /* Asegura que el contenido desplegable esté por encima de otros elementos */
+    left: 0; /* Alinea el submenú con el borde izquierdo del elemento padre */
+  }
+  
+  .dropdown-content li {
+    padding: 0.8rem 1rem; /* Añade relleno a los elementos del contenido desplegable */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Añade un borde inferior ligero */
+    display: block; /* Asegura que los elementos del submenú se apilen verticalmente */
+    text-align: left; /* Alinea el texto a la izquierda dentro del submenú */
+  }
+  
+  .dropdown-content li:last-child {
+    border-bottom: none; /* Elimina el borde inferior del último elemento */
+  }
+  
+  .dropdown-content li a {
+    display: block; /* Hace que el enlace ocupe todo el ancho del li */
+    padding: 0; /* El padding ya está en el li */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: var(--primary); /* Establece el color del texto del enlace */
+    transition: background-color 0.3s ease; /* Añade una transición suave al color de fondo */
+  }
+  
+  .dropdown-content li a:hover {
+    background-color: var(--Arete); /* Un gris más oscuro al pasar el ratón */
+    color: var(--white-text); /* Cambia el color del texto al pasar el ratón */
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block; /* Muestra el contenido desplegable al pasar el ratón sobre el elemento padre */
+  }
+  
+  .dropdown .fa-caret-down {
+    margin-left: 0.5rem; /* Añade un margen izquierdo al icono de flecha hacia abajo */
+  }
+
+
+  /*--------------------------------------------------------------------------------------------*/
+/*PIEE DE PAGINA*/
+
+footer {
+    background-color: var(--primary);
+    /* Establece el color de fondo del pie de página */
+    color: var(--white-text);
+    /* Establece el color del texto del pie de página */
+    display: flex;
+    /* Utiliza Flexbox para la disposición de los elementos dentro del pie de página */
+    justify-content: center;
+    /* Centra horizontalmente los elementos del pie de página */
+    align-items: center;
+    /* Centra verticalmente los elementos del pie de página */
+    text-align: center;
+    padding-top: 2vh;
+    padding-bottom: 2vh; /* Añade un padding inferior para crear espacio */
+    width: 100%; /* Asegúrate de que el footer ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    margin-bottom: 2vh; /* Añade un margen inferior al footer */
+    }   
+
+.footer {
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 50px;
+  padding: 2em;
+  margin-top: 10em;
+  margin-bottom: 0;
+  background-color: #8981a3;
+}
+
+
+
+/*--------------------------------------------------------------------------------------------*/
+/* MEDIA QUERIES PARA RESPONSIVE (aplican a todas las páginas) */
+@media (max-width: 1020px) {
+    nav {
+      justify-content: flex-start; /* Alinea los elementos al inicio en pantallas más pequeñas */
+    }
+    .drawer {
+      display: block; /* Muestra el icono del menú desplegable en pantallas más pequeñas */
+    }
+    nav h1 {
+      margin-left: 1rem; /* Añade un margen izquierdo al título en pantallas más pequeñas */
+    }
+    nav ul {
+      position: fixed; /* Fija la posición del menú */
+      width: 50%; /* Establece el ancho del menú desplegable */
+      height: 60vh; /* Establece la altura del menú desplegable */
+      background-color: var(--primary); /* Color de fondo del menú */
+      top: 10vh; /* Posiciona el menú debajo de la barra de navegación */
+      left: -100%; /* Oculta el menú inicialmente */
+      text-align: left; /* Alinea el texto a la izquierda */
+      transition: all 0.5s; /* Transición suave para la animación */
+      flex-direction: column; /* Dispone los elementos en columna */
+      /* align-content: stretch; /* Estira los elementos del menú */
+    }
+    nav ul li {
+      padding: 0.5rem 0; /* Relleno vertical de los elementos del menú */
+      display: flex; /* Usa Flexbox */
+      flex-direction: column; /* Dispone los elementos en columna */
+      padding-left: 2rem; /* Relleno izquierdo */
+      border-bottom: solid 0.1rem rgba(201, 196, 196, 0.4); /* Borde inferior */
+    }
+    nav ul li a {
+      background-color: var(--white-text);
+      width: 50%;
+      height: 100%;
+    }
+    #ckbox:checked ~ .menu-box {
+      left: 0; /* Muestra el menú cuando el checkbox está marcado */
+    }
+
+    footer {
+      text-align: center; /* Centra el texto del pie de página */
+    }
+  }
+  
+  /* Ajustes para pantallas aún más pequeñas */
+  @media (max-width: 768px) {
+    .estilo-pagina {
+      flex-direction: column; /* Apila imagen y texto */
+      align-items: center; /* Centra horizontalmente */
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .imagen-estilo {
+      width: 80%;
+      max-width: 300px;
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+  
+    .explicacion-estilo {
+      width: 90%;
+      text-align: center;
+    }
+  
+    .explicacion-estilo h2 {
+      font-size: 2rem;
+    }
+  
+    .explicacion-estilo p {
+      font-size: 1rem;
+    }
+  }
+  
+
+
+
+   /*---------------------------------------------------------------------------------------------------*/
+     /*-----------paginas baile---------------*/
+/* Estilos generales */
+
+.estilo-pagina {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente en pantallas grandes */
+    align-items: center; /* Centrar verticalmente en pantallas grandes */
+    padding: 2rem;
+    max-width: 1200px; /* Ancho máximo */
+    margin: 2rem auto; /* Centrar la sección */
+    flex-wrap: wrap; /* Apilar en pantallas pequeñas */
+    gap: 2rem; /* Espacio entre imagen y texto */
+  }
+  
+  .imagen-estilo {
+    width: 100%; /* Ancho de la imagen */
+    max-width: 500px; /* Ancho máximo de la imagen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Mantener imagen dentro del borde */
+  }
+  
+  .imagen-estilo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .explicacion-estilo {
+    width: 50%; /* Ancho del texto */
+    text-align: left;
+  }
+  
+  .explicacion-estilo h2 {
+    color: var(--Arete);
+    margin-bottom: 1rem;
+    font-family: sans-serif;
+    font-size: 2.5rem;
+  }
+  
+  .explicacion-estilo p {
+    color: var(--black-text);
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+
+  /*--------------------------------------------------------------------------------------------*/
+
+  /*----------SOMOS----------*/
+  .quienes-somos-main {
+    display: flex;
+    justify-content: space-around; /* Espacio igual entre elementos */
+    align-items: center; /* Centrar verticalmente */
+    padding: 2rem; /* Espacio alrededor */
+  }
+  
+  .foto-contenedor {
+    width: 100%; /* Define un ancho pequeño para las fotos */
+    height: 100%; /* Define una altura pequeña para las fotos (puedes ajustarla) */
+    overflow: hidden; /* Recorta la imagen si no coincide con las dimensiones */
+    border-radius: 10%; /* Opcional: esquinas redondeadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  .foto-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubrir el contenedor manteniendo la proporción */
+  }
+  
+  .texto-explicativo {
+    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .texto-explicativo h2 {
+    color: var(--Arete);
+    margin-bottom: 1rem;
+    font-family:  sans-serif;
+    font-size: 2rem;
+  }
+  
+  .texto-explicativo p {
+    color: var(--black-text);
+    line-height: 1.6;
+  }
+
+
+  /*--------------------------------------------------------------------------------------------*/
+  /* ESTILOS ESPECÍFICOS DE LA PÁGINA DE CONTACTO (contacto.html) */
+
+  .formulario-contacto {
+    background-color: var(--white-text);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin: 2rem auto;
+  }
+  
+  .formulario-contacto h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-family: sans-serif;
+  }
+  
+  .formulario-contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    color: var(--black-text);
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group input[type="date"],
+  .form-group input[type="time"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    color: var(--black-text);
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--secundary);
+    box-shadow: 0 0 5px rgba(33, 103, 223, 0.5);
+  }
+  
+  .form-group select option {
+    color: var(--black-text);
+  }
+  
+  .form-group.radio-group p,
+  .form-group.checkbox-group p {
+    font-size: 1rem;
+    color: var(--black-text);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group.radio-group div,
+  .form-group.checkbox-group div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+  
+  .form-group.radio-group input[type="radio"],
+  .form-group.checkbox-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  
+  .botones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+  }
+  
+  .botones button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .botones button[type="submit"] {
+    background-color: var(--primary);
+    color: var(--white-text);
+  }
+  
+  .botones button[type="submit"]:hover {
+    background-color: #1c8b84;
+  }
+  
+  .botones button[type="reset"] {
+    background-color: #c3c1cc;
+    color: var(--white-text);
+  }
+  
+  .botones button[type="reset"]:hover {
+    background-color: #d14f4f;
+  }
+  
+  .form-group label strong {
+    color: #f44336;
+  }
+  
+  .form-group label em {
+    font-style: normal;
+    color: #777;
+    font-weight: normal;
+  }
+
+  /*--------------------------------------------------------------------------------*/
+  /*-----------TABLA------------------------------*/
+  .horarios-fondo {
+    background-image: url('img/logotipo_arete_01.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .horarios-fondo th,
+  .horarios-fondo td {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2); /* Bordes más claros */
+  }
+  
+  .horarios-fondo th {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .horarios-fondo .vacio {
+    background-color: transparent; /* Hacer el fondo transparente */
+    color: white; /* Mantener el color del texto si lo hay */
+  }
+  
+  table {
+    width: 80%;
+    margin: 50px auto;
+    border-collapse: collapse;
+    font-size: 1.1rem; /* Establecer el tamaño de fuente base para la tabla */
+  }
+  
+  th,
+  td {
+    border: 1.5px solid #ccc;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+
+
+
+
+  /*--------------------------------------------------------------------------------------------*/
+/* ESTILOS ESPECÍFICOS DE LA PÁGINA DE INICIO (index.html) */
+
+main {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Usar min-height para asegurar que el contenido se vea si es más alto */
+    margin-bottom: 3vh; /* Añade un margen inferior igual al padding-top del footer */
+  }
+  
+  main h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem;
+    color: var(--Arete);
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  main form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Usar gap para espaciar los botones en lugar de márgenes individuales */
+  }
+  
+  main form button {
+    margin-top: 1rem;
+    width: 8rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    border: none; /* Eliminar la repetición de border-style en los botones */
+    border-radius: 0; /* Añadir si se desea un borde redondeado */
+    cursor: pointer; /* Indicar que son interactivos */
+    transition: all 0.3s;
+  }
+  
+  .primary-btn {
+    background-color: var(--primary);
+    color: var(--white-text);
+  }
+  
+  .outline-btn {
+    background-color: var(--white-text);
+    color: var(--primary);
+    border: solid 0.1rem var(--primary);
+  }
+  
+  .primary-btn:hover {
+    background-color: var(--white-text);
+    color: var(--primary);
+  }
+  
+  .outline-btn:hover {
+    background-color: var(--primary);
+    color: var(--white-text);
+  }
+  
+  main .image img {
+    max-height: 70vh; /* Usar max-height para que la imagen no exceda la altura de la ventana y se escale si es necesario */
+    display: block; /* Evita espacios extra debajo de la imagen */
+    margin-left: auto; /* Centra la imagen si el contenedor main es más ancho */
+    margin-right: auto;
+  }
+
+  .image h1{
+    color: #e7eeed;
+    font-family: grasping;
+    font-size: 50px;
+    text-align: center;
+  }
+  
+  /* Estilos para los enlaces dentro de los botones para asegurar que hereden el color */
+  .primary-btn a,
+  .outline-btn a {
+    color: inherit;
+    text-decoration: none; /* Opcional: eliminar el subrayado de los enlaces */
+    display: block; /* Hacer que el enlace ocupe todo el botón para que sea más fácil hacer clic */
+    width: 100%;
+    height: 100%;
+    line-height: 2.5rem; /* Centrar verticalmente el texto del enlace */
+  }
+
+
